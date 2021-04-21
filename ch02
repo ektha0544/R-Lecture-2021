@@ -1,0 +1,54 @@
+data()
+women
+cars
+str(cars)
+plot(women)
+plot(cars)
+anscombe
+plot(anscombe)
+plot(anscombe$x1, anscombe$y1)
+plot(anscombe$x2, anscombe$x2)
+plot(anscombe$x3, anscombe$y3)
+plot(anscombe$x4, anscombe$y4)
+plot(cars)
+plot(cars, col='blue')
+plot(cars, col='blue', xlab='속도', ylab='거리')
+plot(cars, col='blue', xlab='속도', ylab='거리', pch=18)
+?plot
+
+# 두 줄을 선택한 후 상단에 있는 'Run'버튼을 누르면 한꺼번에 실행됨
+a <- 2
+b <- a*a
+
+# 작업 디렉토리를 지정
+getwd()
+setwd('/Workspace/R')
+getwd()
+
+library(dplyr)
+library(ggplot2)
+search() # package에 들어가있는 함수 확인
+
+str(iris) # str은 데이터의 구조를 보는 함수  
+head(iris) # Default는 6개
+head(iris, 10)
+tail(iris) # 끝에서 6개를 보여줌
+plot(iris) # setosa는 나머지 두 개에 비해 확연히 구분이 가능
+
+# 두 속성의 상관관계
+plot(iris$Petal.Length, iris$Petal.Width, col=iris$Species, pch=18)
+
+# tips.csv 
+tips = read.csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv') # +raw,usercontent -blob
+head(tips)
+str(tips)
+
+# 요약통계
+summary(tips)
+
+# ggplo2 그림 그려보기 (p66)
+tips %>% ggplot(aes(size))+geom_histogram() # 히스토그램
+tips %>% ggplot(aes(total_bill, tip))+geom_point() #산점도
+tips %>% ggplot(aes(total_bill, tip))+geom_point(aes(col=day))
+tips %>% ggplot(aes(total_bill, tip))+geom_point(aes(col=day, pch=sex), size=3)
+tips %>% ggplot(aes(total_bill, tip))+geom_point(aes(col=day, pch=time), size=3)
